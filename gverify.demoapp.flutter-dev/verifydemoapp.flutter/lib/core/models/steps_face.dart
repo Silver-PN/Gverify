@@ -1,0 +1,15 @@
+enum StepsFace {
+  FACE_CENTER,
+  LEFT,
+  RIGHT,
+  SMILE,
+  OPEN_MOUTH,
+  SURPRISED,
+  SADNESS,
+  NOD_UP,
+  NOD_DOWN,
+  FACE_FAR,
+  FACE_NEAR,
+  DONE;
+
+}

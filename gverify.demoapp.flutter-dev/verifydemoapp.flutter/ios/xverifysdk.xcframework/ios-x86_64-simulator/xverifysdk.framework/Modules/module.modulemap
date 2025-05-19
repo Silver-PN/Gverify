@@ -1,0 +1,11 @@
+framework module xverifysdk {
+  umbrella header "xverifysdk.h"
+  export *
+
+  module * { export * }
+}
+
+module xverifysdk.Swift {
+  header "xverifysdk-Swift.h"
+  requires objc
+}

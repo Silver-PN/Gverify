@@ -1,0 +1,2288 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name xverifysdk
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVFoundation
+import Alamofire
+import CommonCrypto
+import CoreNFC
+import CoreVideo
+import CryptoKit
+import CryptoTokenKit
+import DeviceCheck
+import Foundation
+import GameKit
+import ObjectMapper
+import OpenSSL
+import PINCache
+import Security
+import Swift
+import SwiftDate
+import UIKit
+import Vision
+import _Concurrency
+import _CoreNFC_UIKit
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import xverifysdk
+public class BasicInformation {
+  public var eidNumber: Swift.String?
+  public var oldEidNumber: Swift.String?
+  public var fullName: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var gender: Swift.String?
+  public var placeOfResidence: Swift.String?
+  public var dateOfIssue: Swift.String?
+  public var dateOfExpiry: Swift.String?
+  public var fatherName: Swift.String?
+  public var motherName: Swift.String?
+  public init(eidNumber: Swift.String? = nil, oldEidNumber: Swift.String? = nil, fullName: Swift.String? = nil, dateOfBirth: Swift.String? = nil, gender: Swift.String? = nil, placeOfResidence: Swift.String? = nil, dateOfIssue: Swift.String? = nil, dateOfExpiry: Swift.String? = nil, fatherName: Swift.String? = nil, motherName: Swift.String? = nil)
+  @objc deinit
+}
+public struct CompanyInfoModel : Swift.Codable {
+  public let taxCode: Swift.String?
+  public let name: Swift.String?
+  public let shortName: Swift.String?
+  public let companyAddress: Swift.String?
+  public let taxAddress: Swift.String?
+  public let phoneNumber: Swift.String?
+  public let dateOfEstablishment: Swift.String?
+  public let beginFiscalDate: Swift.String?
+  public let endFiscalDate: Swift.String?
+  public let accountingForm: Swift.String?
+  public let vatMethod: Swift.String?
+  public let taxAgency: Swift.String?
+  public let businessType: Swift.String?
+  public let businessStatus: Swift.String?
+  public let representative: Swift.String?
+  public let representativeID: Swift.String?
+  public let representativeAddress: Swift.String?
+  public let accountant: Swift.String?
+  public let accountantAddress: Swift.String?
+  public let lastUpdate: Swift.String?
+  public let lastUpdateNote: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class TokenModel {
+  public static var sub: Swift.String?
+  public static var exp: Swift.Int?
+  public static var iat: Swift.Int?
+  public static var jti: Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CecaContentResponseModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var transactionId: Swift.String
+  dynamic public var data: xverifysdk.CecaDataResponseModel?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+public enum CardType : Swift.String, Swift.CaseIterable, Swift.Codable {
+  case FRONT_ID_CARD_9
+  case BACK_ID_CARD_9
+  case FRONT_ID_CARD_12
+  case BACK_ID_CARD_12
+  case FRONT_CHIP_ID_CARD
+  case FRONT_CHIP_ID_NEW_CARD
+  case BACK_CHIP_ID_CARD
+  case BACK_CHIP_ID_NEW_CARD
+  case PASSPORT
+  case EID
+  case NEW_EID
+  case UNKNOWN
+  public func localized() -> Swift.String
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [xverifysdk.CardType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [xverifysdk.CardType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct OCRResponseModel : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let fullName: Swift.String
+  public let surName: Swift.String
+  public let givenName: Swift.String
+  public let personNumber: Swift.String
+  public let passportNumber: Swift.String
+  public let dateOfExpiry: Swift.String
+  public let gender: Swift.String
+  public let placeOfOrigin: Swift.String
+  public let placeOfResidence: Swift.String
+  public let issuedAt: Swift.String
+  public let dateOfIssue: Swift.String
+  public let nationality: Swift.String
+  public let dateOfBirth: Swift.String
+  public let frontType: xverifysdk.CardType
+  public let frontValid: Swift.Bool
+  public let backType: xverifysdk.CardType
+  public let backValid: Swift.Bool
+  public let identificationSign: Swift.String
+  public let personNumberConfidence: Swift.Double?
+  public let fullNameConfidence: Swift.Double?
+  public let dateOfBirthConfidence: Swift.Double?
+  public let genderConfidence: Swift.Double?
+  public let nationalityConfidence: Swift.Double?
+  public let placeOfOriginConfidence: Swift.Double?
+  public let placeOfResidenceConfidence: Swift.Double?
+  public let dateOfExpiryConfidence: Swift.Double?
+  public let identificationSignConfidence: Swift.Double?
+  public let dateOfIssueConfidence: Swift.Double?
+  public let addressDistrict: Swift.String?
+  public let addressTown: Swift.String?
+  public let addressWard: Swift.String?
+  public let hometownDistrict: Swift.String?
+  public let hometownTown: Swift.String?
+  public let hometownWard: Swift.String?
+  public let addressDistrictDigitCode: Swift.String?
+  public let addressTownDigitCode: Swift.String?
+  public let addressWardDigitCode: Swift.String?
+  public let hometownDistrictDigitCode: Swift.String?
+  public let hometownTownDigitCode: Swift.String?
+  public let hometownWardDigitCode: Swift.String?
+  public let addressDistrictAreaCode: Swift.String?
+  public let addressTownAreaCode: Swift.String?
+  public let addressWardAreaCode: Swift.String?
+  public let hometownDistrictAreaCode: Swift.String?
+  public let hometownTownAreaCode: Swift.String?
+  public let hometownWardAreaCode: Swift.String?
+  public let frontInvalidCode: Swift.String?
+  public let backInvalidCode: Swift.String?
+  public let frontInvalidMessage: Swift.String?
+  public let backInvalidMessage: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+  public func getFrontType() -> xverifysdk.CardType
+  public func getBackType() -> xverifysdk.CardType
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum EkycVerificationMode {
+  case liveness
+  case liveness_face_matching
+  case verify_liveness
+  case verify_liveness_face_matching
+  public static func == (a: xverifysdk.EkycVerificationMode, b: xverifysdk.EkycVerificationMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@frozen public struct AnyDecodable : Swift.Decodable {
+  public let value: Any
+  public init<T>(_ value: T?)
+}
+@usableFromInline
+internal protocol _AnyDecodable {
+  var value: Any { get }
+  init<T>(_ value: T?)
+}
+extension xverifysdk.AnyDecodable : xverifysdk._AnyDecodable {
+}
+extension xverifysdk._AnyDecodable {
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension xverifysdk.AnyDecodable : Swift.Equatable {
+  public static func == (lhs: xverifysdk.AnyDecodable, rhs: xverifysdk.AnyDecodable) -> Swift.Bool
+}
+extension xverifysdk.AnyDecodable : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension xverifysdk.AnyDecodable : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension xverifysdk.AnyDecodable : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum EidAuthenticationStatus {
+  case notDone
+  case success
+  case present
+  case failed
+  public static func == (a: xverifysdk.EidAuthenticationStatus, b: xverifysdk.EidAuthenticationStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @available(iOS 13, *)
+public class Eid : ObjectiveC.NSObject {
+  public var sodFile: xverifysdk.SOD? {
+    get
+  }
+  public var sodFileEncoded: Swift.String? {
+    get
+  }
+  public var dg1File: xverifysdk.DataGroup1? {
+    get
+  }
+  public var dg1FileEncoded: Swift.String? {
+    get
+  }
+  public var personDetails: xverifysdk.PersonDetails? {
+    get
+  }
+  public var dg2File: xverifysdk.DataGroup2? {
+    get
+  }
+  public var dg2FileEncoded: Swift.String? {
+    get
+  }
+  public var faceImage: UIKit.UIImage? {
+    get
+  }
+  public var dg7File: xverifysdk.DataGroup7? {
+    get
+  }
+  public var dg7FileEncoded: Swift.String? {
+    get
+  }
+  public var signatureImage: UIKit.UIImage? {
+    get
+  }
+  public var dg11File: xverifysdk.DataGroup11? {
+    get
+  }
+  public var dg11FileEncoded: Swift.String? {
+    get
+  }
+  public var personAdditionalDetails: xverifysdk.PersonAdditionalDetails? {
+    get
+  }
+  public var dg12File: xverifysdk.DataGroup12? {
+    get
+  }
+  public var dg12FileEncoded: Swift.String? {
+    get
+  }
+  public var additionalDocumentDetails: xverifysdk.AdditionalDocumentDetails? {
+    get
+  }
+  public var dg13File: xverifysdk.DataGroup13? {
+    get
+  }
+  public var dg13FileEncoded: Swift.String? {
+    get
+  }
+  public var personOptionalDetails: xverifysdk.PersonOptionalDetails? {
+    get
+  }
+  public var dg14File: xverifysdk.DataGroup14? {
+    get
+  }
+  public var dg14FileEncoded: Swift.String? {
+    get
+  }
+  public var dg15File: xverifysdk.DataGroup15? {
+    get
+  }
+  public var dg15FileEncoded: Swift.String? {
+    get
+  }
+  public var documentSigningCertificate: xverifysdk.X509Wrapper? {
+    get
+  }
+  public var countrySigningCertificate: xverifysdk.X509Wrapper? {
+    get
+  }
+  public var agencyVerified: Swift.Bool
+  public var agencySignatureChecksum: Swift.Bool
+  public var isPaceSupported: Swift.Bool {
+    get
+  }
+  public var isChipAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public var isActiveAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public var BACStatus: xverifysdk.EidAuthenticationStatus {
+    get
+  }
+  public var PACEStatus: xverifysdk.EidAuthenticationStatus {
+    get
+  }
+  public var chipAuthenticationStatus: xverifysdk.EidAuthenticationStatus {
+    get
+  }
+  public var passiveAuthenticationStatus: xverifysdk.EidAuthenticationStatus {
+    get
+  }
+  public var activeAuthenticationStatus: xverifysdk.EidAuthenticationStatus {
+    get
+  }
+  public var dsCertVerified: Swift.Bool {
+    get
+  }
+  public var dsCertChecksumVerified: Swift.Bool {
+    get
+  }
+  @objc override dynamic public init()
+  public init(from dump: [Swift.String : Swift.String])
+  public func verifyRsaSignature(plainText: Swift.String, signature: Swift.String, publicKey: Security.SecKey) -> Swift.Bool
+  public func verifyRsaSignature(publicKeyUrl: Foundation.URL, plainText: Swift.String, signature: Swift.String) -> Swift.Bool
+  public func verifyRsaSignature(plainText: Swift.String, signature: Swift.String) -> Swift.Bool
+  public func dumpDataGroupData(selectedDataGroup: xverifysdk.DataGroupId, includeActiveAuthenticationData: Swift.Bool = false) -> Swift.String
+  public func dumpDataGroupsData(selectedDataGroups: [xverifysdk.DataGroupId], includeActiveAuthenticationData: Swift.Bool = false) -> [Swift.String : Swift.String]
+  public func getCardType() -> xverifysdk.CardType
+  @objc deinit
+}
+@objc public enum EkycLivenessState : Swift.Int {
+  case KEEP_STABLE
+  case THE_DISTANCE_IS_NEAR
+  case THE_DISTANCE_IS_FAR
+  case NORMAL
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct ErrorResponseModel : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PersonAdditionalDetails : ObjectiveC.NSObject {
+  public var nameOfHolder: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var fullDateOfBirth: Swift.String? {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var permanentAddress: Swift.String? {
+    get
+  }
+  public var telephone: Swift.String? {
+    get
+  }
+  public var profession: Swift.String? {
+    get
+  }
+  public var title: Swift.String? {
+    get
+  }
+  public var personalSummary: Swift.String? {
+    get
+  }
+  public var proofOfCitizenship: Swift.String? {
+    get
+  }
+  public var otherValidTdNumbers: Swift.String? {
+    get
+  }
+  public var custodyInformation: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class QRCodeReader {
+  @available(iOS 14.0, *)
+  public static func processQr(sampleBuffer: CoreMedia.CMSampleBuffer, completionHandler: @escaping (_ data: [Swift.String]?) -> Swift.Void)
+  @objc deinit
+}
+public enum PACEMappingType {
+  case GM
+  case IM
+  case CAM
+  public static func == (a: xverifysdk.PACEMappingType, b: xverifysdk.PACEMappingType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class PACEInfo : xverifysdk.SecurityInfo {
+  public static let PARAM_ID_GFP_1024_160: Swift.Int
+  public static let PARAM_ID_GFP_2048_224: Swift.Int
+  public static let PARAM_ID_GFP_2048_256: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P320_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P512_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P521_R1: Swift.Int
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getVersion() -> Swift.Int
+  public func getParameterId() -> Swift.Int?
+  public func getParameterSpec() throws -> Swift.Int32
+  public func getMappingType() throws -> xverifysdk.PACEMappingType
+  public func getKeyAgreementAlgorithm() throws -> Swift.String
+  public func getCipherAlgorithm() throws -> Swift.String
+  public func getDigestAlgorithm() throws -> Swift.String
+  public func getKeyLength() throws -> Swift.Int
+  public func createMappingKey() throws -> Swift.OpaquePointer
+  public static func getParameterSpec(stdDomainParam: Swift.Int) throws -> Swift.Int32
+  public static func toMappingType(oid: Swift.String) throws -> xverifysdk.PACEMappingType
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toDigestAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+public struct VerifyDocumentResponseModel<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  public let transactionCode: Swift.String?
+  public let status: Swift.String?
+  public let message: Swift.String?
+  public let type: Swift.String?
+  public let data: T?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum LogLevel : Swift.Int, Swift.CaseIterable {
+  case verbose
+  case debug
+  case info
+  case warn
+  case error
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [xverifysdk.LogLevel]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [xverifysdk.LogLevel] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Log {
+  public static var logLevel: xverifysdk.LogLevel
+  public static var storeLogs: Swift.Bool
+  public static var logData: [Swift.String]
+  public class func verbose(_ msg: @autoclosure () -> Swift.String)
+  public class func debug(_ msg: @autoclosure () -> Swift.String)
+  public class func info(_ msg: @autoclosure () -> Swift.String)
+  public class func warn(_ msg: @autoclosure () -> Swift.String)
+  public class func error(_ msg: @autoclosure () -> Swift.String)
+  public class func clearStoredLogs()
+  @objc deinit
+}
+public class CecaContentRequestModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var transactionId: Swift.String
+  dynamic public var data: xverifysdk.CecaDataRequestModel?
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  public func toJsonObj() -> [Swift.String : Any]
+  public func toJsonString() -> Swift.String
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+public struct APIResponse<T> : Swift.Decodable where T : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
+}
+public class NetworkService {
+  public init(proto: Swift.String, hostname: Swift.String, customHeaders: [Swift.String : Swift.String]?)
+  public func setCustomsHeader(customHeaders: [Swift.String : Swift.String])
+  public func get<T>(path: Swift.String, parameters: Alamofire.Parameters? = nil, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public func post<T>(path: Swift.String, parameters: Alamofire.Parameters? = nil, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public func put<T>(path: Swift.String, parameters: Alamofire.Parameters? = nil, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public func postEid(path: Swift.String, parameters: Alamofire.Parameters? = nil, completion: @escaping (Swift.Result<xverifysdk.CecaVerifyResponseModel, any Swift.Error>) -> Swift.Void)
+  public func verifyEmotionLiveness(path: Swift.String, emotionPath: Foundation.URL, emotion: Swift.String, completion: @escaping (Swift.Result<xverifysdk.VerifyEmotionLivenessResponseModel, any Swift.Error>) -> Swift.Void)
+  public func uploadFile<T>(path: Swift.String, pathFace: Foundation.URL, pathLeft: Foundation.URL, pathRight: Foundation.URL, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public func uploadFaceMatchingFile<T>(path: Swift.String, originFacePath: Foundation.URL, capturedFacePath: Foundation.URL, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public func uploadOCRFile<T>(path: Swift.String, frontPath: Foundation.URL, backPath: Foundation.URL, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public func uploadOCRXeKYBFile<T>(path: Swift.String, images: [Foundation.URL], parameters: [Swift.String : Any]? = nil, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  @objc deinit
+}
+public enum BankTransactionType : Swift.String {
+  case TypeC
+  case TypeD
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct GtinVerifyResponseModel : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let isValid: Swift.Bool
+  public let responds: xverifysdk.Responds?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Responds : Swift.Codable {
+  public let status: Swift.String
+  public let product: xverifysdk.Product?
+  public let company: xverifysdk.Company?
+  public let gs1License: xverifysdk.Gs1License?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Product : Swift.Codable {
+  public let gtin: Swift.Int64
+  public let productName: Swift.String?
+  public let brandName: Swift.String?
+  public let description: Swift.String?
+  public let images: [Swift.String]?
+  public let gtinRecordStatus: Swift.String?
+  public let managerStatus: Swift.String?
+  public let companyId: Swift.Int
+  public let isVerified: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Company : Swift.Codable {
+  public let companyGln: Swift.String
+  public let companyName: Swift.String?
+  public let address: Swift.String?
+  public let contactNumber: Swift.String?
+  public let email: Swift.String?
+  public let website: Swift.String?
+  public let fax: Swift.String?
+  public let companyInfo: Swift.String?
+  public let companyStatus: Swift.String?
+  public let hasDebt: Swift.String?
+  public let hasDebtAmount: Swift.String?
+  public let yearPaid: Swift.String?
+  public let year: Swift.String?
+  public let id: Swift.Int
+  public let licenseKey: Swift.String?
+  public let taxCode: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Gs1License : Swift.Codable {
+  public let licenseKey: Swift.String?
+  public let licenseType: Swift.String?
+  public let licenseName: Swift.String?
+  public let licenseGln: Swift.String?
+  public let licensingMo: Swift.String?
+  public let dateCreated: Swift.Int
+  public let dateUpdated: Swift.Int
+  public let addressStreet: Swift.String?
+  public let addressLocality: Swift.String?
+  public let countryCode: Swift.String?
+  public let addressStreetLine2: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class BIOFACADE {
+  public class func requestRarVerification(path: Swift.String = "", eid: xverifysdk.Eid, deviceUUID: Swift.String, deviceName: Swift.String, onSuccess: ((xverifysdk.RarVerificationResponse) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  public class func requestBioFaceVerification(path: Swift.String = "", idCard: Swift.String, deviceUUID: Swift.String, captureImage: UIKit.UIImage, onSuccess: ((xverifysdk.BioFaceVerificationResponse) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  public class func requestBioOtpConfirm(path: Swift.String = "", idCard: Swift.String, deviceUUID: Swift.String, otpConfirm: Swift.Bool = true, onSuccess: ((xverifysdk.OtpConfirmationResponse) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  public class func requestTransactionFaceConfirm(path: Swift.String = "", idCard: Swift.String, captureImage: UIKit.UIImage, deviceUUID: Swift.String, transcationType: xverifysdk.BankTransactionType, onSuccess: ((xverifysdk.TransactionFaceVerificationResponse) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  public class func bioInactive(path: Swift.String = "", idCard: Swift.String, deviceUUID: Swift.String, onSuccess: ((xverifysdk.InactiveResponseModel) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  public class func bioRequestActive(path: Swift.String = "", idCard: Swift.String, deviceUUID: Swift.String, onSuccess: ((xverifysdk.RequestActiveAgainResponseModel) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  public class func bioGetOnboardStatus(path: Swift.String = "", deviceUUID: Swift.String, onSuccess: ((xverifysdk.OnboardStatus) -> Swift.Void)?, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc deinit
+}
+public class CecaDataResponseModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var verifyData: xverifysdk.CecaVerifyDataResponseModel?
+  dynamic public var timestamp: xverifysdk.CecaTimestampResponseModel?
+  dynamic public var providerSignature: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class PersonOptionalDetails : ObjectiveC.NSObject {
+  public var eidNumber: Swift.String? {
+    get
+  }
+  public var fullName: Swift.String? {
+    get
+  }
+  public var dateOfBirth: Swift.String? {
+    get
+  }
+  public var gender: Swift.String? {
+    get
+  }
+  public var nationality: Swift.String? {
+    get
+  }
+  public var ethnicity: Swift.String? {
+    get
+  }
+  public var religion: Swift.String? {
+    get
+  }
+  public var placeOfOrigin: Swift.String? {
+    get
+  }
+  public var placeOfResidence: Swift.String? {
+    get
+  }
+  public var personalIdentification: Swift.String? {
+    get
+  }
+  public var dateOfIssue: Swift.String? {
+    get
+  }
+  public var dateOfExpiry: Swift.String? {
+    get
+  }
+  public var fatherName: Swift.String? {
+    get
+  }
+  public var motherName: Swift.String? {
+    get
+  }
+  public var spouseName: Swift.String? {
+    get
+  }
+  public var oldEidNumber: Swift.String? {
+    get
+  }
+  public var unkIdNumber: Swift.String? {
+    get
+  }
+  public var unkInfo: [Swift.String]? {
+    get
+  }
+  @objc deinit
+}
+@objc public protocol PassiveLivenessDelegate {
+  @objc optional func noFace()
+  @objc optional func isDetectedFace()
+  @objc optional func isFaceSoFar()
+  @objc optional func isFaceSoNear()
+  @objc optional func onResultImage(path: Swift.String?)
+  @objc optional func onStatus(message: Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DocTypeEnum : Swift.String {
+  case TD1
+  case TD2
+  case OTHER
+  public init?(rawValue: Swift.String)
+  @available(iOS 13, macOS 10.15, *)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup1 : xverifysdk.DataGroup {
+  public var elements: [Swift.String : Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RestResponse : ObjectiveC.NSObject {
+  public class func build(_ result: Any?, isSuccess: Swift.Bool = true, statusCode: Swift.Int = 200, allHeaderFields: [Swift.AnyHashable : Any]? = nil, statusMessage: Swift.String? = nil) -> xverifysdk.RestResponse
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct BusinessHouseholdResponseModel : Swift.Codable {
+  public let businessHouseholdName: xverifysdk.FieldData?
+  public let textType: xverifysdk.FieldData?
+  public let validUntil: xverifysdk.FieldData?
+  public let businessCode: xverifysdk.FieldData?
+  public let businessCapital: xverifysdk.FieldData?
+  public let businessHouseholdRegistration: xverifysdk.FieldData?
+  public let placeOfIssue: xverifysdk.FieldData?
+  public let businessCapitalWords: xverifysdk.FieldData?
+  public let dateOfEstablishment: xverifysdk.FieldData?
+  public let websiteUrl: xverifysdk.FieldData?
+  public let amendmentCount: xverifysdk.FieldData?
+  public let lastUpdate: xverifysdk.FieldData?
+  public let businessLine: [xverifysdk.BusinessLine]?
+  public let phoneNumber: xverifysdk.FieldData?
+  public let representative: xverifysdk.Representative?
+  public let email: xverifysdk.FieldData?
+  public let businessLocation: xverifysdk.FieldData?
+  public let capitalContributingMembers: [Swift.String]?
+  public let signer: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BusinessLine : Swift.Codable {
+  public let industryName: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc public protocol EkycLivenessNavigateDelegate {
+  @objc func onNavigateState(ekycLivenessState: xverifysdk.EkycLivenessState)
+  @objc func onResetState()
+  @objc func onReadyDetect(isReady: Swift.Bool)
+}
+public enum OnboardStatus : Swift.Int, Swift.Codable {
+  case PENDING
+  case RAR_VERIFIED
+  case BIOMETRIC_VERIFIED
+  case ONBOARD_COMPLETED
+  case INACTIVE
+  case UNKNOWN
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class CecaInfoResponseModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var referenceMessageId: Swift.String
+  dynamic public var responseCode: Swift.Int
+  dynamic public var responseMessage: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+public class CecaDataRequestModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var code: Swift.String
+  dynamic public var cecaTransactionCode: Swift.String
+  dynamic public var dsCert: Swift.String
+  dynamic public var idCardNumber: Swift.String
+  dynamic public var deviceType: Swift.String
+  dynamic public var province: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  public func toJsonObj() -> [Swift.String : Any]
+  public func toJsonString() -> Swift.String
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup13 : xverifysdk.DataGroup {
+  public var eidNumber: Swift.String? {
+    get
+  }
+  public var fullName: Swift.String? {
+    get
+  }
+  public var dateOfBirth: Swift.String? {
+    get
+  }
+  public var gender: Swift.String? {
+    get
+  }
+  public var nationality: Swift.String? {
+    get
+  }
+  public var ethnicity: Swift.String? {
+    get
+  }
+  public var religion: Swift.String? {
+    get
+  }
+  public var placeOfOrigin: Swift.String? {
+    get
+  }
+  public var placeOfResidence: Swift.String? {
+    get
+  }
+  public var personalIdentification: Swift.String? {
+    get
+  }
+  public var dateOfIssue: Swift.String? {
+    get
+  }
+  public var dateOfExpiry: Swift.String? {
+    get
+  }
+  public var fatherName: Swift.String? {
+    get
+  }
+  public var motherName: Swift.String? {
+    get
+  }
+  public var spouseName: Swift.String? {
+    get
+  }
+  public var oldEidNumber: Swift.String? {
+    get
+  }
+  public var unkIdNumber: Swift.String? {
+    get
+  }
+  public var unkInfo: [Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup2 : xverifysdk.DataGroup {
+  public var nrImages: Swift.Int {
+    get
+  }
+  public var versionNumber: Swift.Int {
+    get
+  }
+  public var lengthOfRecord: Swift.Int {
+    get
+  }
+  public var numberOfFacialImages: Swift.Int {
+    get
+  }
+  public var facialRecordDataLength: Swift.Int {
+    get
+  }
+  public var nrFeaturePoints: Swift.Int {
+    get
+  }
+  public var gender: Swift.Int {
+    get
+  }
+  public var eyeColor: Swift.Int {
+    get
+  }
+  public var hairColor: Swift.Int {
+    get
+  }
+  public var featureMask: Swift.Int {
+    get
+  }
+  public var expression: Swift.Int {
+    get
+  }
+  public var poseAngle: Swift.Int {
+    get
+  }
+  public var poseAngleUncertainty: Swift.Int {
+    get
+  }
+  public var faceImageType: Swift.Int {
+    get
+  }
+  public var imageDataType: Swift.Int {
+    get
+  }
+  public var imageWidth: Swift.Int {
+    get
+  }
+  public var imageHeight: Swift.Int {
+    get
+  }
+  public var imageColorSpace: Swift.Int {
+    get
+  }
+  public var sourceType: Swift.Int {
+    get
+  }
+  public var deviceType: Swift.Int {
+    get
+  }
+  public var quality: Swift.Int {
+    get
+  }
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup7 : xverifysdk.DataGroup {
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+public let BIOAPISERVICE: xverifysdk.BioApiService
+@_hasMissingDesignatedInitializers public class BioApiService {
+  public static var shared: xverifysdk.BioApiService
+  public func initialize(apiKey: Swift.String)
+  public func initialize(apiKey: Swift.String, apiBaseUrl: Swift.String, customerCode: Swift.String)
+  public func bioVerifyRAR(path: Swift.String, body: xverifysdk.RarVerificationRequestModel, completion: @escaping (Swift.Result<xverifysdk.RarVerificationResponse, any Swift.Error>) -> Swift.Void)
+  public func bioFaceVerification(path: Swift.String, idCard: Swift.String, captureImage: Swift.String, deviceUUID: Swift.String, completion: @escaping (Swift.Result<xverifysdk.BioFaceVerificationResponse, any Swift.Error>) -> Swift.Void)
+  public func bioConfirmOTP(path: Swift.String, idCard: Swift.String, deviceUUID: Swift.String, otpConfirm: Swift.Bool, completion: @escaping (Swift.Result<xverifysdk.OtpConfirmationResponse, any Swift.Error>) -> Swift.Void)
+  public func bioFaceVerificationBankTransaction(path: Swift.String, idCard: Swift.String, captureImage: Swift.String, deviceUUID: Swift.String, transactionType: Swift.String, completion: @escaping (Swift.Result<xverifysdk.TransactionFaceVerificationResponse, any Swift.Error>) -> Swift.Void)
+  public func bioInactive(path: Swift.String, idCard: Swift.String, deviceUUID: Swift.String, completion: @escaping (Swift.Result<xverifysdk.InactiveResponseModel, any Swift.Error>) -> Swift.Void)
+  public func bioRequestActiveAgain(path: Swift.String, idCard: Swift.String, deviceUUID: Swift.String, completion: @escaping (Swift.Result<xverifysdk.InactiveResponseModel, any Swift.Error>) -> Swift.Void)
+  public func bioGetOnboardStatus(path: Swift.String, deviceUUID: Swift.String, completion: @escaping (Swift.Result<xverifysdk.OnboardStateResponse, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public var SDKBUNDLE: Foundation.Bundle {
+  get
+}
+public var HOMEDIRECTORY: Swift.String {
+  get
+}
+public func LOCALIZED(_ key: Swift.String) -> Swift.String
+public func INIT_CONTROLLER_XIB<T>(_ clazz: T.Type) -> T where T : UIKit.UIViewController
+public func DISPATCH_ASYNC_MAIN_AFTER(_ delay: Swift.Double, closure: @escaping () -> Swift.Void)
+public func DISPATCH_ASYNC_MAIN(_ closure: @escaping () -> Swift.Void)
+public func DISPATCH_ASYNC_BG(_ closure: @escaping () -> Swift.Void)
+public func DISPATCH_ASYNC_BG_AFTER(_ delay: Swift.Double, _ closure: @escaping () -> Swift.Void)
+@available(iOS 13, macOS 10.15, *)
+public enum DataGroupId : Swift.Int, Swift.CaseIterable {
+  case COM
+  case DG1
+  case DG2
+  case DG3
+  case DG4
+  case DG5
+  case DG6
+  case DG7
+  case DG8
+  case DG9
+  case DG10
+  case DG11
+  case DG12
+  case DG13
+  case DG14
+  case DG15
+  case DG16
+  case SOD
+  case Unknown
+  public func getName() -> Swift.String
+  public static func getIDFromName(name: Swift.String) -> xverifysdk.DataGroupId
+  public init?(rawValue: Swift.Int)
+  @available(iOS 13, macOS 10.15, *)
+  public typealias AllCases = [xverifysdk.DataGroupId]
+  @available(iOS 13, macOS 10.15, *)
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [xverifysdk.DataGroupId] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class X509Wrapper {
+  public func certToPEM() -> Swift.String
+  public func getFingerprint() -> Swift.String?
+  public func getNotBeforeDate() -> Swift.String?
+  public func getNotAfterDate() -> Swift.String?
+  public func getSerialNumber() -> Swift.String?
+  public func getSignatureAlgorithm() -> Swift.String?
+  public func getPublicKeyAlgorithm() -> Swift.String?
+  public func getIssuerName() -> Swift.String?
+  public func getSubjectName() -> Swift.String?
+  @objc deinit
+}
+@objc public enum ErrorCode : Swift.Int {
+  case mrzGeneralError = 700
+  case mrzFailedRecognize = 701
+  case mrzNoTextResults = 702
+  case mrzFailedTextProcessing = 703
+  case mrzInvalidImageSource = 704
+  case failedNfcScanning = 800
+  case invalidUrl = 900
+  case invalidResponse = 1000
+  case objectParsing = 1001
+  case invalidObject = 1002
+  case loginError = 1003
+  case verifyLivenessError = 1004
+  case faceMatchingError = 1005
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class ErrorUtils : ObjectiveC.NSObject {
+  public class func error(_ code: xverifysdk.ErrorCode) -> Foundation.NSError
+  public class func error(_ code: xverifysdk.ErrorCode, message: Swift.String?) -> Foundation.NSError
+  public class func error(_ code: xverifysdk.ErrorCode, message: Swift.String?, shouldLog: Swift.Bool) -> Foundation.NSError
+  public class func error(_ result: [Swift.String : Swift.String]) -> Foundation.NSError
+  public class func error(_ result: [Swift.String : Any], shouldLog: Swift.Bool) -> Foundation.NSError
+  public class func error(_ customCode: Swift.Int, message: Swift.String?) -> Foundation.NSError
+  @objc override dynamic public init()
+  @objc deinit
+}
+@available(iOS 13, *)
+public struct ResponseAPDU {
+  public var data: [Swift.UInt8]
+  public var sw1: Swift.UInt8
+  public var sw2: Swift.UInt8
+  public init(data: [Swift.UInt8], sw1: Swift.UInt8, sw2: Swift.UInt8)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class RestClient : ObjectiveC.NSObject {
+  public func invoke(_ request: xverifysdk.RestRequest, retryCount: Swift.Int = 3, callback: xverifysdk.RestCallback? = nil)
+  public func invokeArray(_ request: xverifysdk.RestRequest, retryCount: Swift.Int = 3, callback: xverifysdk.RestCallback? = nil)
+  public func genericInvoke(_ request: xverifysdk.RestRequest, retryCount: Swift.Int = 3, callback: xverifysdk.RestCallback? = nil)
+  public func uploadDataInvoke(_ request: xverifysdk.RestRequest, callback: xverifysdk.RestCallback? = nil)
+  public func uploadInvoke(_ request: xverifysdk.RestRequest, callback: xverifysdk.RestCallback? = nil)
+  public func booleanInvoke(_ request: xverifysdk.RestRequest, encoding: Swift.String, callback: xverifysdk.RestCallback? = nil)
+  public func stringInvoke(_ request: xverifysdk.RestRequest, encoding: Swift.String, retryCount: Swift.Int = 3, callback: xverifysdk.RestCallback? = nil)
+  public func multiPartInvoke(_ request: xverifysdk.RestRequest, retryCount: Swift.Int = 3, callback: xverifysdk.RestCallback? = nil)
+  @objc deinit
+}
+extension Swift.String : Alamofire.ParameterEncoding {
+  public func encode(_ urlRequest: any Alamofire.URLRequestConvertible, with _: Alamofire.Parameters?) throws -> Foundation.URLRequest
+}
+public class CecaTimestampResponseModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var algorithm: Swift.String
+  dynamic public var timestamp: Foundation.Date?
+  dynamic public var timestampToken: Swift.String
+  dynamic public var transactionId: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+public struct FaceMatchingModel : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let invalidCode: Swift.Int
+  public let invalidMessage: Swift.String
+  public let isMatch: Swift.Bool
+  public let matching: Swift.String
+  public let match: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationInfo : xverifysdk.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+public class CecaInfoRequestModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var version: Swift.String
+  dynamic public var senderId: Swift.String
+  dynamic public var receiverId: Swift.String
+  dynamic public var messageType: Swift.Int
+  dynamic public var sendDate: Swift.Int64
+  dynamic public var messageId: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  public func toJsonObj() -> [Swift.String : Any]
+  public func toJsonString() -> Swift.String
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class SDKUtils {
+  public static var branch: Swift.String
+  public static var version: Swift.String
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RestRequest : ObjectiveC.NSObject {
+  public class func build(_ url: Swift.String, method: Swift.String, parameters: [Swift.String : Any]?) -> xverifysdk.RestRequest
+  public class func build(_ url: Swift.String, method: Swift.String, arrayParameters: [[Swift.String : Any]]?) -> xverifysdk.RestRequest
+  public class func build(_ url: Swift.String, filePath: Swift.String?, method: Swift.String, parameters: [Swift.String : Any]?) -> xverifysdk.RestRequest
+  public class func build(_ url: Swift.String, fileData: Foundation.Data?, method: Swift.String, parameters: [Swift.String : Any]?) -> xverifysdk.RestRequest
+  public class func build(_ url: Swift.String, method: Swift.String, parameters: [Swift.String : Any]?, customHeaders: [Swift.String : Swift.String]?) -> xverifysdk.RestRequest
+  public class func build(_ url: Swift.String, method: Swift.String, arrayParameters: [[Swift.String : Any]]?, customHeaders: [Swift.String : Swift.String]?) -> xverifysdk.RestRequest
+  public class func build(_ url: Swift.String, filePath: Swift.String?, method: Swift.String, parameters: [Swift.String : Any]?, customHeaders: [Swift.String : Swift.String]?) -> xverifysdk.RestRequest
+  @objc override dynamic public init()
+  @objc deinit
+}
+public let httpRequestMethodGet: Swift.String
+public let httpRequestMethodHead: Swift.String
+public let httpRequestMethodDelete: Swift.String
+public let httpRequestMethodPost: Swift.String
+public let httpRequestMethodPut: Swift.String
+public let httpRequestMethodPatch: Swift.String
+public let httpRequestContentAll: Swift.String
+public let httpRequestContentApplicationOctetStream: Swift.String
+public let httpRequestContentBinaryOctetStream: Swift.String
+public let httpRequestContentEncodingGzip: Swift.String
+public let httpRequestContentFormUrlEncoded: Swift.String
+public let httpRequestContentImage: Swift.String
+public let httpRequestContentJson: Swift.String
+public let httpRequestContentKeepAlive: Swift.String
+public let httpRequestContentMultipartFormData: Swift.String
+public let httpRequestContentTextPlain: Swift.String
+public let httpRequestContentVimeoJson: Swift.String
+public let httpRequestContentXml: Swift.String
+public let httpRequestHeaderApplicationType: Swift.String
+public let httpRequestHeaderAuthorization: Swift.String
+public let httpRequestHeaderConnection: Swift.String
+public let httpRequestHeaderNameAccept: Swift.String
+public let httpRequestHeaderNameContentEncoding: Swift.String
+public let httpRequestHeaderNameContentLength: Swift.String
+public let httpRequestHeaderNameContentType: Swift.String
+public let httpRequestHeaderXApiKey: Swift.String
+public let httpUrlRequestContentTypeVimeoJson: Swift.String
+public let httpStatusCodeOk: Swift.Int
+public let httpStatusCodeCreated: Swift.Int
+public let httpStatusCodeAccepted: Swift.Int
+public let httpStatusCodeNoContent: Swift.Int
+public let httpStatusCodeMultipleChoices: Swift.Int
+public let httpStatusCodeUnauthorized: Swift.Int
+public let httpStatusCodeForbidden: Swift.Int
+public let httpStatusCodeNotFound: Swift.Int
+public let httpStatusCodeMethodNotAllowed: Swift.Int
+public let httpStatusCodeConflict: Swift.Int
+public let httpStatusCodeTimeout: Swift.Int
+public let httpStatusRequestTimeout: Swift.Int
+public let httpStatusCodeConnectIssue: Swift.Int
+public let httpStatusCodeConnectionOffline: Swift.Int
+public let httpStatusCodeDeviceOffline: Swift.Int
+public let httpStatusCodeInternalError: Swift.Int
+public let httpStatusAccountUnAuthorized: Swift.Int
+public let httpMimeTypeTextPlain: Swift.String
+public let httpMimeTypeTextHtml: Swift.String
+public let httpMimeTypeImageJpeg: Swift.String
+public let httpMimeTypeImagePng: Swift.String
+public let httpMimeTypeAudioMpeg: Swift.String
+public let httpMimeTypeAudioOgg: Swift.String
+public let httpScheme: Swift.String
+public let httpSslScheme: Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class COM : xverifysdk.DataGroup {
+  public var version: Swift.String {
+    get
+  }
+  public var unicodeVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CecaUtils {
+  public class func generateMessageId(senderId: Swift.String) -> Swift.String
+  public class func generateSignature(secretKey: Swift.String, request: xverifysdk.CecaRequestModel) -> Swift.String
+  public class func getProvince(address: Swift.String?) -> Swift.String?
+  public class func normalizeVietnamese(_ str: Swift.String) -> Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class NfcDisplayMessage {
+  public static var dg1Description: Swift.String
+  public static var dg2Description: Swift.String
+  public static var dg3Description: Swift.String
+  public static var dg4Description: Swift.String
+  public static var dg5Description: Swift.String
+  public static var dg6Description: Swift.String
+  public static var dg7Description: Swift.String
+  public static var dg8Description: Swift.String
+  public static var dg9Description: Swift.String
+  public static var dg10Description: Swift.String
+  public static var dg11Description: Swift.String
+  public static var dg12Description: Swift.String
+  public static var dg13Description: Swift.String
+  public static var dg14Description: Swift.String
+  public static var dg15Description: Swift.String
+  public static var dg16Description: Swift.String
+  public static var comDescription: Swift.String
+  public static var sodDescription: Swift.String
+  @objc deinit
+}
+@available(iOS 13, *)
+public enum NfcViewDisplayMessage {
+  case requestPresentEid
+  case authenticatingWithPassport(Swift.Int)
+  case readingDataGroupProgress(xverifysdk.DataGroupId, Swift.Int)
+  case error(xverifysdk.NfcEidReaderError)
+  case successfulRead
+}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.NfcViewDisplayMessage {
+  public var description: Swift.String {
+    get
+  }
+}
+public func stringIsNullOrEmpty(_ string: Swift.String?) -> Swift.Bool
+public struct TaxcodeVerifyAdvanceResponseModel : Swift.Codable {
+  public let status: Swift.String?
+  public let company: xverifysdk.CompanyInfoModel?
+  public let taxTypes: [xverifysdk.TaxType]?
+  public let businessLines: [xverifysdk.BusinessLineModel]?
+  public let branches: [xverifysdk.Branch]?
+  public let sharedHolders: [xverifysdk.ShareHolder]?
+  public let holdingCompany: xverifysdk.HoldingCompany?
+  public let relatedCompanies: [xverifysdk.CompanyInfoModel]?
+  public let representativeOffices: [xverifysdk.Office]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup {
+  public var datagroupType: xverifysdk.DataGroupId
+  public var body: [Swift.UInt8] {
+    get
+  }
+  public var data: [Swift.UInt8] {
+    get
+  }
+  public func hash(_ hashAlgorythm: Swift.String) -> [Swift.UInt8]
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup14 : xverifysdk.DataGroup {
+  public var securityInfos: [xverifysdk.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, *)
+public let EIDFACADE: xverifysdk.EidFacade
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+public class EidFacade {
+  public class var shared: xverifysdk.EidFacade {
+    get
+  }
+  public func processMrz(cmSampleBuffer: CoreMedia.CMSampleBuffer, completionHandler: @escaping (_ mrzInfo: xverifysdk.MRZInfo?) -> Swift.Void, errorHandler: @escaping (_ error: xverifysdk.MRZError?) -> Swift.Void)
+  public func processMrz(image: UIKit.UIImage, completionHandler: @escaping (_ mrzInfo: xverifysdk.MRZInfo?) -> Swift.Void, errorHandler: @escaping (_ error: xverifysdk.MRZError?) -> Swift.Void)
+  public func buildMrzKeyByMRZInfo(eidNumber: Swift.String?, dateOfBirth: Swift.String?, dateOfExpiry: Swift.String?) throws -> Swift.String?
+  public func buildMrzKey(eidNumber: Swift.String?, dateOfBirth: Swift.String?, dateOfExpiry: Swift.String?) throws -> Swift.String?
+  public func buildMrz(eidNumber: Swift.String?, dateOfBirth: Swift.String?, dateOfIssue: Swift.String?) throws -> Swift.String?
+  public func readChipNfc(mrzKey: Swift.String, basicInformation: xverifysdk.BasicInformation? = nil, completionHandler: @escaping (_ eid: xverifysdk.Eid) -> Swift.Void, errorHandler: @escaping (_ error: any Swift.Error) -> Swift.Void)
+  public func parserQrCode(result: Swift.String) -> xverifysdk.BasicInformation?
+  public func setTerminateWhenHangingTimeInterval(timeInterval: Swift.Double)
+  public func extractProvince(_ address: Swift.String?) -> Swift.String?
+  public func getDateOfExpiry(dateOfBirth: Swift.String) throws -> [Swift.String]
+  @objc deinit
+}
+public class CecaVerifyResponseModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var info: xverifysdk.CecaInfoResponseModel?
+  dynamic public var content: xverifysdk.CecaContentResponseModel?
+  dynamic public var signature: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+public struct InactiveResponseModel : Swift.Codable {
+  public var success: Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+  public init(success: Swift.Bool)
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class SOD : xverifysdk.DataGroup {
+  public var pkcs7CertificateData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+  public func getPublicKey() throws -> Swift.OpaquePointer
+  public func getEncapsulatedContent() throws -> Foundation.Data
+  public func getEncapsulatedContentDigestAlgorithm() throws -> Swift.String
+  public func getSignedAttributes() throws -> Foundation.Data
+  public func getMessageDigestFromSignedAttributes() throws -> Foundation.Data
+  public func getSignature() throws -> Foundation.Data
+  public func getSignatureAlgorithm() throws -> Swift.String
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup12 : xverifysdk.DataGroup {
+  public var issuingAuthority: Swift.String? {
+    get
+  }
+  public var dateOfIssue: Swift.String? {
+    get
+  }
+  public var namesOfOtherPersons: Swift.String? {
+    get
+  }
+  public var endorsementsOrObservations: Swift.String? {
+    get
+  }
+  public var taxOrExitRequirements: Swift.String? {
+    get
+  }
+  public var imageOfFront: [Swift.UInt8]? {
+    get
+  }
+  public var imageOrRear: [Swift.UInt8]? {
+    get
+  }
+  public var dateAndTimeOfPersonalization: Swift.String? {
+    get
+  }
+  public var personalizationSystemSerialNumber: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public struct OnboardStateResponse : Swift.Codable {
+  public let onboardingState: xverifysdk.OnboardStatus
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PersonDetails : ObjectiveC.NSObject {
+  public var mrzCode: Swift.String? {
+    get
+  }
+  public var documentType: Swift.String? {
+    get
+  }
+  public var documentSubType: Swift.String? {
+    get
+  }
+  public var issuingState: Swift.String? {
+    get
+  }
+  public var primaryIdentifier: Swift.String? {
+    get
+  }
+  public var secondaryIdentifier: Swift.String? {
+    get
+  }
+  public var nationality: Swift.String? {
+    get
+  }
+  public var documentNumber: Swift.String? {
+    get
+  }
+  public var dateOfBirth: Swift.String? {
+    get
+  }
+  public var dateOfExpiry: Swift.String? {
+    get
+  }
+  public var gender: Swift.String? {
+    get
+  }
+  public var optionalData1: Swift.String? {
+    get
+  }
+  public var optionalData2: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RestCallback : ObjectiveC.NSObject {
+  public typealias RestResponseBlock = (xverifysdk.RestResponse) -> Swift.Void
+  public class func callbackWithResult(_ result: xverifysdk.RestCallback.RestResponseBlock?) -> xverifysdk.RestCallback
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup15 : xverifysdk.DataGroup {
+  public var rsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  public var ecdsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  @objc deinit
+}
+@objc public protocol ModelProtocol {
+  @objc optional var searchCriteria: Swift.String { get }
+  @objc optional var statusMessage: Swift.String? { get }
+  @objc func isValid() -> Swift.Bool
+}
+@objc public protocol AutoHashable {
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+public class MRZInfo {
+  public var documentType: xverifysdk.DocTypeEnum
+  public var documentCode: Swift.String
+  public var issuingState: Swift.String
+  public var nationality: Swift.String
+  public var documentNumber: Swift.String
+  public var dateOfBirth: Swift.String
+  public var gender: Swift.String
+  public var dateOfExpiry: Swift.String
+  public static func createTD1MRZInfo(documentCode: Swift.String, issuingState: Swift.String, documentNumber: Swift.String, dateOfBirth: Swift.String, gender: Swift.String, dateOfExpiry: Swift.String, nationality: Swift.String) -> xverifysdk.MRZInfo
+  @objc deinit
+}
+public struct BioFaceVerificationResponse : Swift.Codable {
+  public let transactionCode: Swift.String?
+  public let isMatching: Swift.Bool?
+  public let idCard: Swift.String?
+  public let fullName: Swift.String?
+  public let deviceuuid: Swift.String?
+  public let onboardingState: xverifysdk.OnboardStatus?
+  public let biometricConfidence: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public let kFormatDateISO8601UTC: Swift.String
+@objc @_inheritsConvenienceInitializers public class CachedDateFormatter : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public func dateFormatterWith(format: Swift.String, locale: Foundation.Locale, isTimeZoneFormat: Swift.Bool = true, timeZone: Foundation.TimeZone? = TimeZone.current) -> Foundation.DateFormatter
+  public func dateFormatterWith(format: Swift.String, localeIdentifier: Swift.String) -> Foundation.DateFormatter
+  public func dateFormatterWith(format: Swift.String) -> Foundation.DateFormatter
+  public func getLocale() -> Foundation.Locale
+  @objc deinit
+}
+@objc public protocol EkycLivenessDelegate {
+  @objc optional func onMultiFace()
+  @objc optional func onNoFace()
+  @objc optional func onPlaySound()
+  @objc optional func onStep(step: xverifysdk.StepFace)
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationPublicKeyInfo : xverifysdk.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class NotImplementedDG : xverifysdk.DataGroup {
+  @objc deinit
+}
+public let APISERVICE: xverifysdk.ApiService
+@_hasMissingDesignatedInitializers public class ApiService {
+  public static var shared: xverifysdk.ApiService
+  public static var EID_PROTOCOL: Swift.String
+  public static var EID_HOSTNAME: Swift.String
+  public static var EKYC_PROTOCOL: Swift.String
+  public static var EKYC_VDT_HOSTNAME: Swift.String
+  public static var EKYB_PROTOCOL: Swift.String
+  public static var EKYB_VDT_HOSTNAME: Swift.String
+  public func initialize(apiKey: Swift.String)
+  public func initialize(apiKey: Swift.String, apiBaseUrl: Swift.String, customerCode: Swift.String)
+  public func initialize(apiKey: Swift.String, apiBaseUrl: Swift.String, customerCode: Swift.String, bioBaseUrl: Swift.String)
+  public func verifyEid(path: Swift.String, idCard: Swift.String, dsCert: Swift.String, deviceType: Swift.String, province: Swift.String, code: Swift.String, completion: @escaping (Swift.Result<xverifysdk.EidVerifyModel, any Swift.Error>) -> Swift.Void)
+  public func verifyLiveness(path: Swift.String, pathFace: Swift.String, pathLeft: Swift.String, pathRight: Swift.String, completion: @escaping (Swift.Result<xverifysdk.LivenessVerifyModel, any Swift.Error>) -> Swift.Void)
+  public func verifyCecaEid(path: Swift.String, request: xverifysdk.CecaRequestModel, serviceType: Swift.Int, completion: @escaping (Swift.Result<xverifysdk.CecaVerifyResponseModel, any Swift.Error>) -> Swift.Void)
+  public func verifyFaceMatching(path: Swift.String, originFacePath: Swift.String, capturedFacePath: Swift.String, completion: @escaping (Swift.Result<xverifysdk.FaceMatchingModel, any Swift.Error>) -> Swift.Void)
+  public func verifyOCR(path: Swift.String, frontPath: Swift.String, backPath: Swift.String, completion: @escaping (Swift.Result<xverifysdk.OCRResponseModel, any Swift.Error>) -> Swift.Void)
+  public func verifyEmotionLiveness(path: Swift.String, emotionPath: Swift.String, emotion: Swift.String, completion: @escaping (Swift.Result<xverifysdk.VerifyEmotionLivenessResponseModel, any Swift.Error>) -> Swift.Void)
+  public func verifyGtin(gtin: Swift.String, completion: @escaping (Swift.Result<xverifysdk.GtinVerifyResponseModel, any Swift.Error>) -> Swift.Void)
+  public func verifyOCReKYB<T>(path: Swift.String, image: [Foundation.URL], type: Swift.String, completion: @escaping (Swift.Result<xverifysdk.VerifyDocumentResponseModel<T>, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable, T : Swift.Encodable
+  public func verifyTaxCode(path: Swift.String, taxCode: Swift.String, completion: @escaping (Swift.Result<xverifysdk.TaxcodeVerifyInfoResponseModel<xverifysdk.TaxcodeVerifyAdvanceResponseModel>, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public struct TaxcodeVerifyInfoResponseModel<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  public let transactionCode: Swift.String?
+  public let isValid: Swift.Bool?
+  public let responds: T?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TaxType : Swift.Codable {
+  public let code: Swift.String?
+  public let name: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BusinessLineModel : Swift.Codable {
+  public let code: Swift.String?
+  public let name: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Branch : Swift.Codable {
+  public let taxCode: Swift.String?
+  public let name: Swift.String?
+  public let address: Swift.String?
+  public let provinceCode: Swift.String?
+  public let provinceName: Swift.String?
+  public let districtCode: Swift.String?
+  public let districtName: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ShareHolder : Swift.Codable {
+  public let idNumber: Swift.String?
+  public let idType: Swift.String?
+  public let name: Swift.String?
+  public let gender: Swift.String?
+  public let dateOfBirth: Swift.String?
+  public let isLegalRepresentative: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct HoldingCompany : Swift.Codable {
+  public let taxCode: Swift.String?
+  public let name: Swift.String?
+  public let address: Swift.String?
+  public let vatMethod: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Office : Swift.Codable {
+  public let taxCode: Swift.String?
+  public let name: Swift.String?
+  public let address: Swift.String?
+  public let provinceCode: Swift.String?
+  public let provinceName: Swift.String?
+  public let districtCode: Swift.String?
+  public let districtName: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct FieldData : Swift.Codable {
+  public let confidence: Swift.Float?
+  public let value: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias ObjectResult<T> = (T?, Foundation.NSError?) -> Swift.Void where T : ObjectMapper.Mappable
+public typealias ObjectArrayResult<T> = ([T]?, Foundation.NSError?) -> Swift.Void where T : ObjectMapper.Mappable
+public typealias BooleanResult = (Swift.Bool, Foundation.NSError?) -> Swift.Void
+public typealias StringResult = (Swift.String?, Foundation.NSError?) -> Swift.Void
+public typealias JsonResult = ([Swift.String : Any]?, Foundation.NSError?) -> Swift.Void
+@objc @_inheritsConvenienceInitializers public class BaseApiService : ObjectiveC.NSObject {
+  public class var headers: [Swift.String : Swift.String] {
+    get
+  }
+  public class var multiPartHeaders: [Swift.String : Swift.String] {
+    get
+  }
+  public class var urlEncodedHeaders: [Swift.String : Swift.String] {
+    get
+  }
+  public class func GET(_ url: Swift.String) -> xverifysdk.RestRequest
+  public class func GET(_ url: Swift.String, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func GET(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil) -> xverifysdk.RestRequest
+  public class func GET(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func POST_MULTI_PART(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil) -> xverifysdk.RestRequest
+  public class func POST_URL_ENCODED(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ arrayParameters: [[Swift.String : Any]]? = nil) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ arrayParameters: [[Swift.String : Any]]? = nil, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil, _ filePath: Swift.String?) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil, _ filePath: Swift.String?, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func POST(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil, _ fileData: Foundation.Data?) -> xverifysdk.RestRequest
+  public class func PUT(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil) -> xverifysdk.RestRequest
+  public class func PUT(_ url: Swift.String, _ parameters: [Swift.String : Any]? = nil, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func DELETE(_ url: Swift.String) -> xverifysdk.RestRequest
+  public class func DELETE(_ url: Swift.String, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func PATCH(_ url: Swift.String, _ filePath: Swift.String?) -> xverifysdk.RestRequest
+  public class func PATCH(_ url: Swift.String, _ filePath: Swift.String?, _ customHeaders: [Swift.String : Swift.String]) -> xverifysdk.RestRequest
+  public class func BUILDURLPARAMS(_ url: Swift.String, params: [Swift.String]?) -> Swift.String
+  public class func BUILDURLENDPOINT(baseUrl: Swift.String, endPoint: Swift.String) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Foundation.Data {
+  public func sha256() -> Swift.String
+}
+extension Swift.String {
+  public func sha256() -> Swift.String
+  public func matchingStrings(regex: Swift.String) -> [[Swift.String]]
+  public func fromBase64() -> Swift.String?
+  public func toBase64() -> Swift.String?
+}
+public struct RequestActiveAgainResponseModel : Swift.Codable {
+  public var success: Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+  public init(success: Swift.Bool)
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public let ACTIVEEKYCSERVICE: xverifysdk.LivenessUtils
+@_hasMissingDesignatedInitializers public class LivenessUtils {
+  public static let shared: xverifysdk.LivenessUtils
+  public func initialize(referenceImagePath: Swift.String?, verificationMode: xverifysdk.EkycVerificationMode, faceDelegate: (any xverifysdk.EkycLivenessDelegate)?, faceResultDelegate: (any xverifysdk.EkycFaceResultDelegate)?, verifyDelegate: (any xverifysdk.EkycVerifyDelegate)?, customStepFace: [xverifysdk.StepFace] = [], navigateDelegate: (any xverifysdk.EkycLivenessNavigateDelegate)?, shouldRandomStepFace: Swift.Bool = false, isAllowVerifySpoof: Swift.Bool = false)
+  public func setReferenceImagePath(path: Swift.String)
+  public func processDetectFaces(sampleBuffer: CoreMedia.CMSampleBuffer, width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)
+  public func processDetectFrontFace(sampleBuffer: CoreMedia.CMSampleBuffer, width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)
+  public func performVerifyFrontFaceMatching(originPath: Swift.String)
+  public func resetAnalysis()
+  @objc deinit
+}
+@frozen public struct AnyEncodable : Swift.Encodable {
+  public let value: Any
+  public init<T>(_ value: T?)
+}
+@usableFromInline
+internal protocol _AnyEncodable {
+  var value: Any { get }
+  init<T>(_ value: T?)
+}
+extension xverifysdk.AnyEncodable : xverifysdk._AnyEncodable {
+}
+extension xverifysdk._AnyEncodable {
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension xverifysdk.AnyEncodable : Swift.Equatable {
+  public static func == (lhs: xverifysdk.AnyEncodable, rhs: xverifysdk.AnyEncodable) -> Swift.Bool
+}
+extension xverifysdk.AnyEncodable : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension xverifysdk.AnyEncodable : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByNilLiteral {
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = Swift.Bool
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = Swift.Int
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = Swift.Double
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByStringLiteral {
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByStringInterpolation {
+  public typealias StringInterpolation = Swift.DefaultStringInterpolation
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = Any
+}
+extension xverifysdk.AnyEncodable : Swift.ExpressibleByDictionaryLiteral {
+  public typealias Key = Swift.AnyHashable
+  public typealias Value = Any
+}
+extension xverifysdk._AnyEncodable {
+  public init(nilLiteral _: ())
+  public init(booleanLiteral value: Swift.Bool)
+  public init(integerLiteral value: Swift.Int)
+  public init(floatLiteral value: Swift.Double)
+  public init(extendedGraphemeClusterLiteral value: Swift.String)
+  public init(stringLiteral value: Swift.String)
+  public init(arrayLiteral elements: Any...)
+  public init(dictionaryLiteral elements: (Swift.AnyHashable, Any)...)
+}
+extension xverifysdk.AnyEncodable : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct RarVerificationResponse : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let idCard: Swift.String
+  public let fullName: Swift.String
+  public let responds: xverifysdk.VerificationRespond
+  public let rarSignature: Swift.String
+  public let onboardingState: xverifysdk.OnboardStatus
+  public let rarDetailMessage: Swift.String
+  public let deviceUUID: Swift.String
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct VerificationRespond : Swift.Codable {
+  public let responseId: Swift.String
+  public let exitCode: Swift.Int
+  public let result: Swift.Bool
+  public let message: Swift.String
+  public let time: Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class CardAccess {
+  public var securityInfos: [xverifysdk.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+public struct BusinessInfoResponseModel : Swift.Codable {
+  public let textType: xverifysdk.FieldData?
+  public let businessRegistrationLocation: xverifysdk.FieldData?
+  public let companyAddress: xverifysdk.FieldData?
+  public let placeOfIssue: xverifysdk.FieldData?
+  public let taxCode: xverifysdk.FieldData?
+  public let companyOwner: xverifysdk.FieldData?
+  public let dateOfEstablishment: xverifysdk.FieldData?
+  public let websiteUrl: xverifysdk.FieldData?
+  public let shareValue: xverifysdk.FieldData?
+  public let charterCapital: xverifysdk.FieldData?
+  public let name: xverifysdk.FieldData?
+  public let phoneNumber: xverifysdk.FieldData?
+  public let shortName: xverifysdk.FieldData?
+  public let fax: xverifysdk.FieldData?
+  public let representatives: [xverifysdk.Representative]?
+  public let internationalName: xverifysdk.FieldData?
+  public let email: xverifysdk.FieldData?
+  public let totalShares: xverifysdk.FieldData?
+  public let capitalContributingMember: [xverifysdk.ContributingMember]?
+  public let signer: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Representative : Swift.Codable {
+  public let documentPlaceOfIssue: xverifysdk.FieldData?
+  public let address: xverifysdk.FieldData?
+  public let ethnicity: xverifysdk.FieldData?
+  public let gender: xverifysdk.FieldData?
+  public let nationality: xverifysdk.FieldData?
+  public let dob: xverifysdk.FieldData?
+  public let name: xverifysdk.FieldData?
+  public let permanentResidence: xverifysdk.FieldData?
+  public let documentIssueDate: xverifysdk.FieldData?
+  public let idType: xverifysdk.FieldData?
+  public let position: xverifysdk.FieldData?
+  public let id: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ContributingMember : Swift.Codable {
+  public let note: xverifysdk.FieldData?
+  public let contributedCapital: xverifysdk.FieldData?
+  public let proportion: xverifysdk.FieldData?
+  public let name: xverifysdk.FieldData?
+  public let id: xverifysdk.FieldData?
+  public let companyAddress: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyEmotionLivenessResponseModel : Swift.Codable {
+  public let isSuccess: Swift.Bool
+  public let errorModel: xverifysdk.ErrorResponseModel
+  public let data: xverifysdk.DataVerifyEmotionModel
+  public init(isSuccess: Swift.Bool, errorModel: xverifysdk.ErrorResponseModel, data: xverifysdk.DataVerifyEmotionModel)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DataVerifyEmotionModel : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let code: Swift.String
+  public let message: Swift.String
+  public let match: Swift.String
+  public let emotionDetect: Swift.String
+  public let emotionRequest: Swift.String
+  public init(transactionCode: Swift.String, code: Swift.String, message: Swift.String, match: Swift.String, emotionDetect: Swift.String, emotionRequest: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum MRZError : Swift.Error {
+  case MrzGeneralError
+  case MrzFailedRecognize
+  case MrzNoTextResults
+  case MrzFailedTextProcessing
+  case MrzInvalidImageSource
+  public var value: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var localizedDescription: Swift.String? {
+    get
+  }
+  public static func == (a: xverifysdk.MRZError, b: xverifysdk.MRZError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum InvalidateError : Swift.Error {
+  case INVALIDATE_EID_NUMBER
+  case INVALIDATE_DOB
+  case INVALIDATE_DOE
+  case INVALIDATE_EID_NUMBER_FORMAT
+  case INVALIDATE_DOB_FORMAT
+  case INVALIDATE_DOE_FORMAT
+  public var value: Swift.String {
+    get
+  }
+  public var localizedDescription: Swift.String? {
+    get
+  }
+  public static func == (a: xverifysdk.InvalidateError, b: xverifysdk.InvalidateError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NfcEidReaderError : Swift.Error {
+  case ResponseError(Swift.String, Swift.UInt8, Swift.UInt8)
+  case InvalidResponse
+  case UnexpectedError
+  case NFCNotSupported
+  case NoConnectedTag
+  case D087Malformed
+  case InvalidResponseChecksum
+  case MissingMandatoryFields
+  case CannotDecodeASN1Length
+  case InvalidASN1Value
+  case UnableToProtectAPDU
+  case UnableToUnprotectAPDU
+  case UnsupportedDataGroup
+  case DataGroupNotRead
+  case UnknownTag
+  case UnknownImageFormat
+  case NotImplemented
+  case TagNotValid
+  case ConnectionError
+  case UserCanceled
+  case InvalidMRZKey
+  case MoreThanOneTagFound
+  case InvalidHashAlgorithmSpecified
+  case UnsupportedCipherAlgorithm
+  case UnsupportedMappingType
+  case PACEError(Swift.String, Swift.String)
+  case ChipAuthenticationFailed
+  case InvalidDataPassed(Swift.String)
+  case NotYetSupported(Swift.String)
+  case SystemBusy
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var localizedDescriptions: Swift.String? {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum OpenSSLError : Swift.Error {
+  case UnableToGetX509CertificateFromPKCS7(Swift.String)
+  case UnableToVerifyX509CertificateForSOD(Swift.String)
+  case VerifyAndReturnSODEncapsulatedData(Swift.String)
+  case UnableToReadECPublicKey(Swift.String)
+  case UnableToExtractSignedDataFromPKCS7(Swift.String)
+  case VerifySignedAttributes(Swift.String)
+  case UnableToParseASN1(Swift.String)
+  case UnableToDecryptRSASignature(Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.OpenSSLError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum PassiveAuthenticationError : Swift.Error {
+  case UnableToParseSODHashes(Swift.String)
+  case InvalidDataGroupHash(Swift.String)
+  case SODMissing(Swift.String)
+}
+extension xverifysdk.PassiveAuthenticationError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@objc public enum StepFace : Swift.Int {
+  case face = 0
+  case left = 1
+  case right = 2
+  case up = 3
+  case down = 4
+  case smile = 5
+  case done = 6
+  case far = 7
+  case near = 8
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup11 : xverifysdk.DataGroup {
+  public var nameOfHolder: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var fullDateOfBirth: Swift.String? {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var permanentAddress: Swift.String? {
+    get
+  }
+  public var telephone: Swift.String? {
+    get
+  }
+  public var profession: Swift.String? {
+    get
+  }
+  public var title: Swift.String? {
+    get
+  }
+  public var personalSummary: Swift.String? {
+    get
+  }
+  public var proofOfCitizenship: Swift.String? {
+    get
+  }
+  public var otherValidTdNumbers: Swift.String? {
+    get
+  }
+  public var custodyInformation: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public struct RarVerificationRequestModel : Swift.Codable {
+  public let requestId: Swift.String?
+  public let idCard: Swift.String?
+  public let oldIdCard: Swift.String?
+  public let fullName: Swift.String?
+  public let dateOfBirth: Swift.String?
+  public let gender: Swift.String?
+  public let nationality: Swift.String?
+  public let race: Swift.String?
+  public let religion: Swift.String?
+  public let placeOfOrigin: Swift.String?
+  public let placeOfResidence: Swift.String?
+  public let personalIdentification: Swift.String?
+  public let dateOfIssue: Swift.String?
+  public let dateOfExpiry: Swift.String?
+  public let fatherName: Swift.String?
+  public let motherName: Swift.String?
+  public let deviceType: Swift.String?
+  public let deviceUUID: Swift.String?
+  public let deviceName: Swift.String?
+  public let province: Swift.String?
+  public let dsCert: Swift.String?
+  public let chipImg: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+  public init(from eid: xverifysdk.Eid, deviceUUID: Swift.String, deviceName: Swift.String, dsCert: Swift.String)
+  public var asDictionary: [Swift.String : Any] {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public let PASSIVESERVICE: xverifysdk.PassiveLivenessUtils
+@_hasMissingDesignatedInitializers public class PassiveLivenessUtils {
+  public static let shared: xverifysdk.PassiveLivenessUtils
+  public var setCheckTime: Swift.Bool
+  public func initialize(referenceImagePath: Swift.String?, verificationMode: xverifysdk.EkycVerificationMode, passiveLivenessDelegate: (any xverifysdk.PassiveLivenessDelegate)?)
+  public func clearSession()
+  @available(iOS 14.0, *)
+  public func startPassiveLiveness(sampleBuffer: CoreMedia.CMSampleBuffer, width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)
+  public func resetPassiveEkyc()
+  public func setMinMaxTimeSecond(min: Swift.Int, max: Swift.Int)
+  public func setOverTime(overTime: Swift.Int)
+  @objc deinit
+}
+public enum EkycVerifyError {
+  case EKYC_FAILED
+  case REFERENCE_NOT_FOUND
+  case OTHER
+  public static func == (a: xverifysdk.EkycVerifyError, b: xverifysdk.EkycVerifyError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol EkycVerifyDelegate {
+  func onProcess()
+  func onFinish()
+  func onFailed(error: Foundation.NSError, capturedFace: Swift.String, ekycVerificationMode: xverifysdk.EkycVerificationMode, errorCode: xverifysdk.EkycVerifyError)
+  func onVerifyCompleted(ekycVerificationMode: xverifysdk.EkycVerificationMode, verifyLiveness: Swift.Bool, verifyFaceMatch: Swift.Bool, capturedFace: Swift.String?)
+}
+@available(iOS 13, macOS 10.15, *)
+public class ASN1Item : Swift.CustomDebugStringConvertible {
+  public init(line: Swift.String)
+  public func getChild(_ child: Swift.Int) -> xverifysdk.ASN1Item?
+  public func getNumberOfChildren() -> Swift.Int
+  public var debugDescription: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class SimpleASN1DumpParser {
+  public init()
+  public func parse(data: Foundation.Data) throws -> xverifysdk.ASN1Item
+  public func test()
+  @objc deinit
+}
+public struct EidVerifyModel : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let isValidIdCard: Swift.Bool
+  public var responds: Swift.String?
+  public let signature: Swift.String
+  public let detailMessage: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension Foundation.Date {
+  public var millisecondsSince1970: Swift.Int64 {
+    get
+  }
+}
+@objc public protocol EkycFaceResultDelegate {
+  @objc optional func onFaceLeft(_ faceLeft: Swift.String)
+  @objc optional func onFaceCenter(_ faceCenter: Swift.String)
+  @objc optional func onFaceRight(_ faceRight: Swift.String)
+  @objc optional func onFaceUp(_ faceUp: Swift.String)
+  @objc optional func onFaceDown(_ faceDown: Swift.String)
+  @objc optional func onSmile(_ faceSmile: Swift.String)
+  @objc optional func onFaceFar(_ faceFar: Swift.String)
+  @objc optional func onFaceNear(_ faceNear: Swift.String)
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class SecurityInfo {
+  public func getObjectIdentifier() -> Swift.String
+  public func getProtocolOIDString() -> Swift.String
+  public static func getInstance(object: xverifysdk.ASN1Item, body: [Swift.UInt8]) -> xverifysdk.SecurityInfo?
+  @objc deinit
+}
+public enum SecureMessagingSupportedAlgorithms {
+  case DES
+  case AES
+  public static func == (a: xverifysdk.SecureMessagingSupportedAlgorithms, b: xverifysdk.SecureMessagingSupportedAlgorithms) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct BranchInfoResponseModel : Swift.Codable {
+  public let registerActivity: xverifysdk.FieldData?
+  public let businessName: xverifysdk.FieldData?
+  public let headquartersAddress: xverifysdk.FieldData?
+  public let textType: xverifysdk.FieldData?
+  public let abbreviatedBranchName: xverifysdk.FieldData?
+  public let companyAddress: xverifysdk.FieldData?
+  public let placeOfIssue: xverifysdk.FieldData?
+  public let branchCode: xverifysdk.FieldData?
+  public let taxCode: xverifysdk.FieldData?
+  public let dateOfEstablishment: xverifysdk.FieldData?
+  public let leader: xverifysdk.LeaderInfo?
+  public let nameForeignBranch: xverifysdk.FieldData?
+  public let websiteUrl: xverifysdk.FieldData?
+  public let amendmentCount: xverifysdk.FieldData?
+  public let lastUpdate: xverifysdk.FieldData?
+  public let phoneNumber: xverifysdk.FieldData?
+  public let fax: xverifysdk.FieldData?
+  public let email: xverifysdk.FieldData?
+  public let branchNameVietnamese: xverifysdk.FieldData?
+  public let signer: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LeaderInfo : Swift.Codable {
+  public let documentPlaceOfIssue: xverifysdk.FieldData?
+  public let address: xverifysdk.FieldData?
+  public let ethnicity: xverifysdk.FieldData?
+  public let gender: xverifysdk.FieldData?
+  public let nationality: xverifysdk.FieldData?
+  public let dob: xverifysdk.FieldData?
+  public let name: xverifysdk.FieldData?
+  public let permanentResidence: xverifysdk.FieldData?
+  public let documentIssueDate: xverifysdk.FieldData?
+  public let idType: xverifysdk.FieldData?
+  public let id: xverifysdk.FieldData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LivenessVerifyModel : Swift.Codable {
+  public let transactionCode: Swift.String
+  public let invalidCode: Swift.Int
+  public let invalidMessage: Swift.String
+  public var matching_mid_left: Swift.String
+  public let matching_mid_right: Swift.String
+  public let isValid: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TransactionFaceVerificationResponse : Swift.Codable {
+  public let transactionCode: Swift.String?
+  public let bankTracsactionType: Swift.String?
+  public let transactionStatus: xverifysdk.TransactionStatus?
+  public let idCard: Swift.String?
+  public let deviceuuid: Swift.String?
+  public let chipImg: Swift.String?
+  public let capturedImg: Swift.String?
+  public let biometricConfidence: Swift.Double?
+  public init(transactionCode: Swift.String?, bankTracsactionType: Swift.String?, transactionStatus: xverifysdk.TransactionStatus?, idCard: Swift.String?, deviceuuid: Swift.String?, chipImg: Swift.String?, capturedImg: Swift.String?, biometricConfidence: Swift.Double?)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@frozen public struct AnyCodable : Swift.Codable {
+  public let value: Any
+  public init<T>(_ value: T?)
+}
+extension xverifysdk.AnyCodable : xverifysdk._AnyEncodable, xverifysdk._AnyDecodable {
+}
+extension xverifysdk.AnyCodable : Swift.Equatable {
+  public static func == (lhs: xverifysdk.AnyCodable, rhs: xverifysdk.AnyCodable) -> Swift.Bool
+}
+extension xverifysdk.AnyCodable : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension xverifysdk.AnyCodable : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByNilLiteral {
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = Swift.Bool
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = Swift.Int
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = Swift.Double
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByStringLiteral {
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByStringInterpolation {
+  public typealias StringInterpolation = Swift.DefaultStringInterpolation
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = Any
+}
+extension xverifysdk.AnyCodable : Swift.ExpressibleByDictionaryLiteral {
+  public typealias Key = Swift.AnyHashable
+  public typealias Value = Any
+}
+extension xverifysdk.AnyCodable : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class AdditionalDocumentDetails : ObjectiveC.NSObject {
+  public var issuingAuthority: Swift.String? {
+    get
+  }
+  public var dateOfIssue: Swift.String? {
+    get
+  }
+  public var namesOfOtherPersons: Swift.String? {
+    get
+  }
+  public var endorsementsOrObservations: Swift.String? {
+    get
+  }
+  public var taxOrExitRequirements: Swift.String? {
+    get
+  }
+  public var imageOfFront: [Swift.UInt8]? {
+    get
+  }
+  public var imageOrRear: [Swift.UInt8]? {
+    get
+  }
+  public var dateAndTimeOfPersonalization: Swift.String? {
+    get
+  }
+  public var personalizationSystemSerialNumber: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public class CecaVerifyDataResponseModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var cecaTransactionCode: Swift.String
+  dynamic public var isVerified: Swift.Bool
+  dynamic public var idCardNumber: Swift.String
+  dynamic public var dsCert: Swift.String
+  dynamic public var timestamp: Foundation.Date?
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public func AESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESECBEncrypt(key: [Swift.UInt8], message: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+public enum TransactionStatus : Swift.Int, Swift.Codable {
+  case UNKNOWN
+  case PENDING
+  case BIOMETRIC_VERIFIED
+  case BIOMETRIC_DENIED
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class CecaRequestModel : ObjectMapper.Mappable, xverifysdk.ModelProtocol {
+  dynamic public var info: xverifysdk.CecaInfoRequestModel?
+  dynamic public var content: xverifysdk.CecaContentRequestModel?
+  dynamic public var signature: Swift.String
+  dynamic public var code: Swift.String
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  public func toJsonObj() -> [Swift.String : Any]
+  public func toJsonString() -> Swift.String
+  @objc public func isValid() -> Swift.Bool
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let didUnAuthorized: Foundation.Notification.Name
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ActiveAuthenticationInfo : xverifysdk.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getSignatureAlgorithmOIDString() -> Swift.String?
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public struct DataGroupHash {
+  public var id: Swift.String
+  public var sodHash: Swift.String
+  public var computedHash: Swift.String
+  public var match: Swift.Bool
+}
+public struct OtpConfirmationResponse : Swift.Codable {
+  public let transactionCode: Swift.String?
+  public let idCard: Swift.String?
+  public let fullName: Swift.String?
+  public let deviceuuid: Swift.String?
+  public let onboardingState: xverifysdk.OnboardStatus?
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension xverifysdk.CardType : Swift.Equatable {}
+extension xverifysdk.CardType : Swift.Hashable {}
+extension xverifysdk.CardType : Swift.RawRepresentable {}
+extension xverifysdk.EkycVerificationMode : Swift.Equatable {}
+extension xverifysdk.EkycVerificationMode : Swift.Hashable {}
+extension xverifysdk.EidAuthenticationStatus : Swift.Equatable {}
+extension xverifysdk.EidAuthenticationStatus : Swift.Hashable {}
+extension xverifysdk.EkycLivenessState : Swift.Equatable {}
+extension xverifysdk.EkycLivenessState : Swift.Hashable {}
+extension xverifysdk.EkycLivenessState : Swift.RawRepresentable {}
+extension xverifysdk.PACEMappingType : Swift.Equatable {}
+extension xverifysdk.PACEMappingType : Swift.Hashable {}
+extension xverifysdk.LogLevel : Swift.Equatable {}
+extension xverifysdk.LogLevel : Swift.Hashable {}
+extension xverifysdk.LogLevel : Swift.RawRepresentable {}
+extension xverifysdk.BankTransactionType : Swift.Equatable {}
+extension xverifysdk.BankTransactionType : Swift.Hashable {}
+extension xverifysdk.BankTransactionType : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.DocTypeEnum : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.DocTypeEnum : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.DocTypeEnum : Swift.RawRepresentable {}
+extension xverifysdk.OnboardStatus : Swift.Equatable {}
+extension xverifysdk.OnboardStatus : Swift.Hashable {}
+extension xverifysdk.OnboardStatus : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.DataGroupId : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.DataGroupId : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension xverifysdk.DataGroupId : Swift.RawRepresentable {}
+extension xverifysdk.ErrorCode : Swift.Equatable {}
+extension xverifysdk.ErrorCode : Swift.Hashable {}
+extension xverifysdk.ErrorCode : Swift.RawRepresentable {}
+extension xverifysdk.MRZError : Swift.Equatable {}
+extension xverifysdk.MRZError : Swift.Hashable {}
+extension xverifysdk.InvalidateError : Swift.Equatable {}
+extension xverifysdk.InvalidateError : Swift.Hashable {}
+extension xverifysdk.StepFace : Swift.Equatable {}
+extension xverifysdk.StepFace : Swift.Hashable {}
+extension xverifysdk.StepFace : Swift.RawRepresentable {}
+extension xverifysdk.EkycVerifyError : Swift.Equatable {}
+extension xverifysdk.EkycVerifyError : Swift.Hashable {}
+extension xverifysdk.SecureMessagingSupportedAlgorithms : Swift.Equatable {}
+extension xverifysdk.SecureMessagingSupportedAlgorithms : Swift.Hashable {}
+extension xverifysdk.TransactionStatus : Swift.Equatable {}
+extension xverifysdk.TransactionStatus : Swift.Hashable {}
+extension xverifysdk.TransactionStatus : Swift.RawRepresentable {}
