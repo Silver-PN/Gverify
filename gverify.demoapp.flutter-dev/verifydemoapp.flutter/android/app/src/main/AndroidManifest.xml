@@ -15,7 +15,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
-        android:label="GVerify"
+        android:label="Katalyst Verify"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
